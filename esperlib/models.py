@@ -128,7 +128,7 @@ def CharField(*args, **kwargs):
 class EsperModel(models.Model):
     class Meta:
         abstract = True
-        app_label = 'server'
+        app_label = 'query'
 
 
 class Video(EsperModel):

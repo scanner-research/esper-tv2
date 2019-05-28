@@ -30,7 +30,7 @@ ALLOWED_HOSTS = ['app', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
-    'webpack_loader', 'django_extensions', 'server.apps.DjangoConfig',
+    'webpack_loader', 'django_extensions', 'query.apps.DjangoConfig',
     'django.contrib.admin', 'django.contrib.auth',
     'django.contrib.contenttypes', 'django.contrib.sessions',
     'django.contrib.messages', 'django.contrib.staticfiles'

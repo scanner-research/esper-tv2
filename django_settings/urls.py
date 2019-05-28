@@ -19,6 +19,6 @@ from django.contrib import admin
 from django.conf.urls.static import static
 
 urlpatterns = [
-    url(r'^', include('server.urls')),
+    url(r'^', include('query.urls')),
     url(r'^admin/', admin.site.urls),
 ]
