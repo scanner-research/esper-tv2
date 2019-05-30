@@ -121,6 +121,12 @@ class Face(Labeled, BoundingBox, EsperModel):
     blurriness = models.FloatField(null=True)
     probability = models.FloatField(default=1.)
 
+    def as_interval(self):
+        intvl = BoundingBox.as_interval(self)
+        t = self.frame.number / self.frame.video.fps
+        intvl.bounds.data['t1'] = t
+        return intvl
+
     class Meta(EsperModel.Meta):
         unique_together = ('labeler', 'frame', 'bbox_x1', 'bbox_x2', 'bbox_y1',
                            'bbox_y2')
