@@ -187,6 +187,15 @@ class Video(EsperModel):
         from scannertools import Video as STVideo
         return STVideo(self.path)
 
+    def for_vgrid(self):
+        from vgrid import VideoMetadata
+        return VideoMetadata(path=self.path,
+                             id=self.id,
+                             fps=self.fps,
+                             num_frames=self.num_frames,
+                             width=self.width,
+                             height=self.height)
+
     class Meta(EsperModel.Meta):
         abstract = True
 
@@ -257,6 +266,16 @@ class BoundingBox(EsperModel):
             self.bbox_x1, self.bbox_x2, self.bbox_y1, self.bbox_y2,
             self.bbox_score
         ])
+
+    def as_interval(self):
+        from rekall import Interval, Bounds3D
+        return Interval(
+            Bounds3D(t1=0,
+                     t2=0,
+                     x1=self.bbox_x1,
+                     x2=self.bbox_x2,
+                     y1=self.bbox_y1,
+                     y2=self.bbox_y2))
 
     class Meta(EsperModel.Meta):
         abstract = True
